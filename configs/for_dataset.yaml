@@ -1,0 +1,27 @@
+# =============================================================================
+# ABC-CapsNet: FoR Dataset Configuration
+# =============================================================================
+# Inherits from default.yaml — only overrides are listed here.
+
+dataset:
+  name: "for"
+  data_dir: "data/FoR"
+  versions:
+    - "for-original"
+    - "for-norm"
+    - "for-2seconds"
+    - "for-rerecorded"
+  use_combined: true        # Combine all versions into one dataset
+
+training:
+  epochs: 100
+  batch_size: 32
+  optimizer:
+    name: "adam"
+    lr: 0.0001
+
+audio:
+  sample_rate: 16000
+  duration: 4.0
+
+output_dir: "experiments/for"

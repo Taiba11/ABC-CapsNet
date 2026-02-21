@@ -1,0 +1,94 @@
+# =============================================================================
+# ABC-CapsNet: Default Configuration
+# =============================================================================
+
+# --- Model ---
+model:
+  name: "ABC-CapsNet"
+  # VGG18 backbone
+  backbone:
+    name: "vgg18"
+    pretrained: true
+    freeze_layers: 0  # number of initial layers to freeze (0 = train all)
+
+  # Attention mechanism
+  attention:
+    hidden_dim: 256
+    dropout: 0.1
+
+  # Capsule Network 1 (CN1)
+  capsule_net_1:
+    in_channels: 256
+    primary_caps:
+      num_capsules: 8
+      capsule_dim: 32
+      kernel_size: 9
+      stride: 2
+    digit_caps:
+      num_capsules: 2       # real / fake
+      capsule_dim: 16
+      routing_iterations: 3
+
+  # Capsule Network 2 (CN2)
+  capsule_net_2:
+    primary_caps:
+      num_capsules: 4
+      capsule_dim: 16
+      kernel_size: 5
+      stride: 1
+    digit_caps:
+      num_capsules: 2       # real / fake
+      capsule_dim: 16
+      routing_iterations: 3
+
+# --- Audio Preprocessing ---
+audio:
+  sample_rate: 16000
+  duration: 4.0            # seconds (pad/truncate to this length)
+  noise_reduction: true
+
+# --- Mel Spectrogram ---
+mel_spectrogram:
+  n_fft: 2048
+  hop_length: 512
+  n_mels: 224
+  image_size: [224, 224]
+  window: "hann"
+
+# --- Training ---
+training:
+  epochs: 100
+  batch_size: 32
+  optimizer:
+    name: "adam"
+    lr: 0.0001
+    weight_decay: 0.00001
+    betas: [0.9, 0.999]
+  scheduler:
+    name: "cosine"
+    T_max: 100
+    eta_min: 0.000001
+  loss:
+    name: "margin"
+    m_plus: 0.9
+    m_minus: 0.1
+    lambda_val: 0.5
+
+# --- Data ---
+data:
+  num_workers: 4
+  pin_memory: true
+  train_split: 0.8
+  val_split: 0.1
+  test_split: 0.1
+
+# --- Logging ---
+logging:
+  log_interval: 50         # steps between logs
+  save_interval: 5         # epochs between checkpoints
+  tensorboard: true
+  save_best: true
+
+# --- Misc ---
+seed: 42
+device: "cuda"

@@ -1,0 +1,39 @@
+# =============================================================================
+# ABC-CapsNet: ASVspoof 2019 (LA) Configuration
+# =============================================================================
+# Inherits from default.yaml — only overrides are listed here.
+
+dataset:
+  name: "asvspoof2019"
+  scenario: "LA"           # LA (Logical Access) or PA (Physical Access)
+  data_dir: "data/ASVspoof2019/LA"
+  protocols_dir: "data/ASVspoof2019/LA/ASVspoof2019_LA_cm_protocols"
+
+  # Attack types in evaluation set
+  eval_attacks:
+    - "A07"
+    - "A08"
+    - "A09"
+    - "A10"
+    - "A11"
+    - "A12"
+    - "A13"
+    - "A14"
+    - "A15"
+    - "A16"
+    - "A17"
+    - "A18"
+    - "A19"
+
+training:
+  epochs: 100
+  batch_size: 32
+  optimizer:
+    name: "adam"
+    lr: 0.0001
+
+audio:
+  sample_rate: 16000
+  duration: 4.0
+
+output_dir: "experiments/asvspoof2019"
