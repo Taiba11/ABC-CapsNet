@@ -1,0 +1,31 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+title: "ABC-CapsNet: Attention based Cascaded Capsule Network for Audio Deepfake Detection"
+type: software
+authors:
+  - family-names: "Wani"
+    given-names: "Taiba Majid"
+    email: "majid@diag.uniroma1.it"
+    affiliation: "Sapienza University of Rome"
+  - family-names: "Gulzar"
+    given-names: "Reeva"
+    email: "gulzar.1958711@studenti.uniroma1.it"
+    affiliation: "Sapienza University of Rome"
+  - family-names: "Amerini"
+    given-names: "Irene"
+    email: "amerini@diag.uniroma1.it"
+    affiliation: "Sapienza University of Rome"
+preferred-citation:
+  type: conference-paper
+  title: "ABC-CapsNet: Attention based Cascaded Capsule Network for Audio Deepfake Detection"
+  authors:
+    - family-names: "Wani"
+      given-names: "Taiba Majid"
+    - family-names: "Gulzar"
+      given-names: "Reeva"
+    - family-names: "Amerini"
+      given-names: "Irene"
+  collection-title: "Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition Workshops (CVPRW)"
+  year: 2024
+  start: 2464
+  end: 2472
